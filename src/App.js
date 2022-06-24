@@ -69,10 +69,10 @@ function App() {
 
   /* A distractor was clicked */
   const handleClick= (i) => {
-    if (isActive == false) return;
+    if (isActive === false) return;
     //change selected state
     let tempArray = [...selectedArray]
-    if(tempArray[i] == i) {
+    if(tempArray[i] === i) {
       tempArray[i] = null;
     }else{
       tempArray[i] = i
@@ -88,7 +88,7 @@ function App() {
     //check if submit button is available
     let cnt = 0;
     for (let t of tempArray){
-      if (tempArray[t] != null){
+      if (tempArray[t] !== null){
         cnt++;
         setIsDisabled(false);
         break;
