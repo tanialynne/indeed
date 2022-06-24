@@ -77,9 +77,9 @@ function App() {
     }else{
       tempArray[i] = i
       //this only has one answer, toggle off the others
-      if (questions[currentQuestion].qtype == "samc"){
+      if (questions[currentQuestion].qtype === "samc"){
         for (let t of tempArray){
-          if (tempArray[t] != i){
+          if (tempArray[t] !== i){
             tempArray[t] = null;
           }
         }
@@ -94,7 +94,7 @@ function App() {
         break;
       }
     }
-    if (cnt==0) setIsDisabled(true);
+    if (cnt===0) setIsDisabled(true);
 
     //change distractor state
     setSelectedArray(tempArray)
@@ -112,13 +112,13 @@ function App() {
     //for each item of the distractors array, check if answer is
     let correctAnsArr = [];
     for (let option of questions[currentQuestion].options) {
-      if (option.isCorrect == true){
+      if (option.isCorrect === true){
         correctAnsArr.push(option.id)
       }
     }
 
     for (let curItem of selectedArray){
-      if (curItem != null){
+      if (curItem !== null){
         if (correctAnsArr.includes(curItem)){
           tempArray[curItem] = curItem;
           numCorrect++;
@@ -129,7 +129,7 @@ function App() {
     }
     setCorrectArray(tempArray);
 
-    if (numCorrect == correctAnsArr.length){
+    if (numCorrect === correctAnsArr.length){
       var newscore = score + 1;
       setScore(newscore);
     }
@@ -141,7 +141,7 @@ function App() {
       }else{
         //change feedback based on score
         let decimal = (newscore / questions.length)
-        if (decimal == 1){
+        if (decimal === 1){
           setFeedback("You're a Trivia Master!");
           setFeedbackImage("perfect");
         }else if (decimal >= .7){
