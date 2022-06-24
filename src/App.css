@@ -64,7 +64,6 @@ li:not(.selected):hover{
   color: #fff;
   font-size: 22px;
   font-weight:700;
-      padding: 0 20px;
 }
 
 button {
@@ -116,17 +115,17 @@ button.retry{
   transition: background-color .25s linear;
 }
 
-.final-results.perfect:before{
-  content:url('img/perfect.png');
+.final-results.perfect{
+
 }
-.final-results.good:before{
-  content:url('img/good.png');
-};
-.final-results.ok:before{
-  content:url('img/ok.png');
+.final-results.good{
+
 }
-.final-results.uhoh:before{
-  content:url('img/uhoh.png');
+.final-results.ok{
+
+}
+.final-results.oops{
+
 }
 
 @media only screen and (max-width: 1280px) {
@@ -140,6 +139,5 @@ button.retry{
     margin: 0 auto;
     width: 100%;
     padding:16px 0;
-    min-width:325px;
   }
 }
