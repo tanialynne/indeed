@@ -235,9 +235,9 @@ function App() {
                   tabIndex="1"
                   key={option.id}
                   className={`
-                    ${ selectedArray[option.id]==option.id? "selected" : "" }
-                    ${ correctArray[option.id]==option.id? "correct" : "" }
-                    ${ correctArray[option.id]==(option.id+"-")? "incorrect" : "" }
+                    ${ selectedArray[option.id]===option.id? "selected" : "" }
+                    ${ correctArray[option.id]===option.id? "correct" : "" }
+                    ${ correctArray[option.id]===(option.id+"-")? "incorrect" : "" }
                   `}
                   onClick={() => handleClick(option.id)}
                   onKeyPress={(event) => {
