@@ -117,16 +117,16 @@ button.retry{
 }
 
 .final-results.perfect:before{
-  content:url('img/perfect.png');
+  content:url('https://tanialynne.com/indeed/img/perfect.png');
 }
 .final-results.good:before{
-  content:url('img/good.png');
+  content:url('https://tanialynne.com/indeed/img/good.png');
 };
 .final-results.ok:before{
-  content:url('img/ok.png');
+  content:url('https://tanialynne.com/indeed/img/ok.png');
 }
 .final-results.uhoh:before{
-  content:url('img/uhoh.png');
+  content:url('https://tanialynne.com/indeed/img/uhoh.png');
 }
 
 @media only screen and (max-width: 1280px) {
