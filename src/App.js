@@ -14,6 +14,10 @@ function App() {
   const [bestScore, setBestScore] = useState("");
   const [score, setScore] = useState(0);
 
+  const answerCorrect = .1;
+  const answerIncorrect = .2;
+  const answerMissed = .3;
+
   const questions = [
     {
       text: "If you have 10 mangos and another person gives you 12 more, how‌ ‌many‌ ‌mangos‌ ‌will‌ ‌you‌ ‌have‌ ‌in‌ ‌total?‌",
@@ -109,21 +113,28 @@ function App() {
 
     let numCorrect = 0;
     let tempArray = [...correctArray];
-    //for each item of the distractors array, check if answer is
+    //for each item of the distractors array, check if answer is a correct one
     let correctAnsArr = [];
     for (let option of questions[currentQuestion].options) {
       if (option.isCorrect == true){
         correctAnsArr.push(option.id)
       }
     }
-
+    //check if selected answer is correct or incorrect
     for (let curItem of selectedArray){
+      //item has been selected
       if (curItem != null){
+        //selected correct answer
         if (correctAnsArr.includes(curItem)){
-          tempArray[curItem] = curItem;
+          tempArray[curItem] = curItem+answerCorrect;
           numCorrect++;
-        }else{
-          tempArray[curItem] = curItem+"-";
+        }else{ //selected incorrect answer
+          tempArray[curItem] = curItem+answerIncorrect;
+        }
+      }else{
+        //correct answer not selected
+        if (correctAnsArr.includes(curItem)){
+          tempArray[curItem] = curItem+answerMissed;
         }
       }
     }
@@ -236,8 +247,9 @@ function App() {
                   key={option.id}
                   className={`
                     ${ selectedArray[option.id]==option.id? "selected" : "" }
-                    ${ correctArray[option.id]==option.id? "correct" : "" }
-                    ${ correctArray[option.id]==(option.id+"-")? "incorrect" : "" }
+                    ${ correctArray[option.id]==(option.id+answerCorrect)? "correct" : "" }
+                    ${ correctArray[option.id]==(option.id+answerIncorrect)? "incorrect" : "" }
+                    ${ correctArray[option.id]==(option.id+answerMissed)? "missed" : "" }
                   `}
                   onClick={() => handleClick(option.id)}
                   onKeyPress={(event) => {
