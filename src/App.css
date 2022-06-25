@@ -64,6 +64,10 @@ li:not(.selected):hover{
   color: #fff;
   font-size: 22px;
   font-weight:700;
+<<<<<<< HEAD
+=======
+      padding: 0 20px;
+>>>>>>> 6a81d2dc0a1796845d83a79a3824226eaa328e67
 }
 
 button {
@@ -115,6 +119,7 @@ button.retry{
   transition: background-color .25s linear;
 }
 
+<<<<<<< HEAD
 .final-results.perfect{
 
 }
@@ -126,6 +131,19 @@ button.retry{
 }
 .final-results.oops{
 
+=======
+.final-results.perfect:before{
+  content:url('https://tanialynne.com/indeed/img/perfect.png');
+}
+.final-results.good:before{
+  content:url('https://tanialynne.com/indeed/img/good.png');
+};
+.final-results.ok:before{
+  content:url('https://tanialynne.com/indeed/img/ok.png');
+}
+.final-results.uhoh:before{
+  content:url('https://tanialynne.com/indeed/img/uhoh.png');
+>>>>>>> 6a81d2dc0a1796845d83a79a3824226eaa328e67
 }
 
 @media only screen and (max-width: 1280px) {
@@ -139,5 +157,9 @@ button.retry{
     margin: 0 auto;
     width: 100%;
     padding:16px 0;
+<<<<<<< HEAD
+=======
+    min-width:325px;
+>>>>>>> 6a81d2dc0a1796845d83a79a3824226eaa328e67
   }
 }
