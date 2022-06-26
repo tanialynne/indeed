@@ -13,10 +13,12 @@ function App() {
   const [feedbackImage, setFeedbackImage] = useState("");
   const [bestScore, setBestScore] = useState("");
   const [score, setScore] = useState(0);
+  const [transition, setTransition] = useState("");
 
   const answerCorrect = .1;
   const answerIncorrect = .2;
   const answerMissed = .3;
+  const questionNextDelay = 500;
 
   const questions = [
     {
@@ -124,73 +126,79 @@ function App() {
     for (let curItem of selectedArray){
       //item has been selected
       if (curItem != null){
-        //selected correct answer
+        //selected answer exists in correct array - match
         if (correctAnsArr.includes(curItem)){
           tempArray[curItem] = curItem+answerCorrect;
           numCorrect++;
-        }else{ //selected incorrect answer
+        }else{ //selected answer does not exist in correct array - incorrect
           tempArray[curItem] = curItem+answerIncorrect;
         }
-      }else{
-        //correct answer not selected
-        if (correctAnsArr.includes(curItem)){
-          tempArray[curItem] = curItem+answerMissed;
-        }
       }
     }
-    setCorrectArray(tempArray);
-
+    //got all correct
     if (numCorrect == correctAnsArr.length){
-      var newscore = score + 1;
-      setScore(newscore);
-    }
-
-    setTimeout(() => {
-      if (currentQuestion + 1 < questions.length) {
-        resetRound();
-        setCurrentQuestion(currentQuestion + 1);
-      }else{
-        //change feedback based on score
-        let decimal = (newscore / questions.length)
-        if (decimal == 1){
-          setFeedback("You're a Trivia Master!");
-          setFeedbackImage("perfect");
-        }else if (decimal >= .7){
-          setFeedback("Great Job!");
-          setFeedbackImage("good");
-        }else if (decimal >= .4){
-          setFeedback("Not too bad.");
-          setFeedbackImage("ok");
-        }else{
-          setFeedback("You can do better.");
-          setFeedbackImage("uhoh");
+      setScore(score + 1);
+    }else{
+      //check for correct answers not selected
+      for (let corItem of correctAnsArr){
+        //did not select correct answer
+        if (!selectedArray.includes(corItem)){
+            tempArray[corItem] = corItem+answerMissed;
         }
-
-        //local storage of best score and date
-        let curBestScore = null;
-        let curBestDate = null;
-
-        if (localStorage.getItem('tlg-test-game-score') === null) {
-          localStorage.setItem('tlg-test-game-score', decimal);
-          localStorage.setItem('tlg-test-game-date', new Date().toLocaleDateString());
-        }else{
-          curBestScore = localStorage.getItem('tlg-test-game-score');
-          curBestDate = localStorage.getItem('tlg-test-game-date');
-
-          if (decimal > curBestScore){
-            curBestScore = decimal;
-            curBestDate = new Date().toLocaleDateString();
-            localStorage.setItem('tlg-test-game-score', curBestScore);
-            localStorage.setItem('tlg-test-game-date', curBestDate);
-          }
-
-          setBestScore("Your best score so far is "+ (curBestScore*100) +
-          "%, which you got on "+ curBestDate + ".");
-        }
-
-        setShowResults(true);
       }
-    }, 800);
+    }
+    setTransition('');
+    setCorrectArray(tempArray);
+  }
+
+  const nextQuestion = () => {
+    setTransition('fadeInAndOut');
+    setTimeout(() => {
+    if (currentQuestion + 1 < questions.length) {
+      resetRound();
+      setCurrentQuestion(currentQuestion + 1);
+    }else{
+      //change feedback based on score
+      let decimal = (score / questions.length)
+      if (decimal == 1){
+        setFeedback("You're a Trivia Master!");
+        setFeedbackImage("perfect");
+      }else if (decimal >= .7){
+        setFeedback("Great Job!");
+        setFeedbackImage("good");
+      }else if (decimal >= .4){
+        setFeedback("Not too bad.");
+        setFeedbackImage("notbad");
+      }else{
+        setFeedback("You can do better.");
+        setFeedbackImage("uhoh");
+      }
+
+      //local storage of best score and date
+      let curBestScore = null;
+      let curBestDate = null;
+
+      if (localStorage.getItem('tlg-test-game-score') === null) {
+        localStorage.setItem('tlg-test-game-score', decimal);
+        localStorage.setItem('tlg-test-game-date', new Date().toLocaleDateString());
+      }else{
+        curBestScore = localStorage.getItem('tlg-test-game-score');
+        curBestDate = localStorage.getItem('tlg-test-game-date');
+
+        if (decimal >= curBestScore){
+          curBestScore = decimal;
+          curBestDate = new Date().toLocaleDateString();
+          localStorage.setItem('tlg-test-game-score', curBestScore);
+          localStorage.setItem('tlg-test-game-date', curBestDate);
+        }
+
+        setBestScore("Your best score so far is "+ (curBestScore*100) +
+        "%, which you last got on "+ curBestDate + ".");
+      }
+
+      setShowResults(true);
+    }
+  }, questionNextDelay);
   }
 
   /* Resets the distractors & submit button */
@@ -203,6 +211,7 @@ function App() {
 
   /* Resets the game back to default */
   const restartGame = () => {
+    setTransition('');
     resetRound();
     setScore(0);
     setCurrentQuestion(0);
@@ -235,16 +244,17 @@ function App() {
           <h2>
 
           </h2>
-          <h3 className="question-text" tabIndex="1">{questions[currentQuestion].text}</h3>
+          <h3 className="question-text" tabIndex="1" className={transition}>{questions[currentQuestion].text}</h3>
 
           {/* List of distractors  */}
-          <ul>
+          <ul className={transition}>
             {questions[currentQuestion].options.map((option) => {
               return (
                 <li
                   role="button"
                   tabIndex="1"
                   key={option.id}
+                  disabled={!isActive}
                   className={`
                     ${ selectedArray[option.id]==option.id? "selected" : "" }
                     ${ correctArray[option.id]==(option.id+answerCorrect)? "correct" : "" }
@@ -263,9 +273,17 @@ function App() {
               );
             })}
           </ul>
-          <button onClick={checkAnswer} disabled={isDisabled} >
-            Submit
-          </button>
+
+          {isActive ? (
+            <button onClick={checkAnswer} disabled={isDisabled} className={transition}>
+              Submit
+            </button>
+            ):(
+              <button onClick={nextQuestion} className={transition}>
+                Next
+              </button>
+            )
+          }
         </div>
       )}
     </div>

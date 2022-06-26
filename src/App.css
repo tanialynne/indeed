@@ -45,10 +45,17 @@ li {
   color:#fff;
   cursor:pointer;
   transition: all .25s ease-in-out;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 }
 
 li:not(.selected):hover{
   background-color: rgba(255,255,255,.2);
+}
+li[disabled]:hover{
+  background-color:inherit;
+  cursor:default;
 }
 
 .current-status{
@@ -64,10 +71,7 @@ li:not(.selected):hover{
   color: #fff;
   font-size: 22px;
   font-weight:700;
-<<<<<<< HEAD
-=======
-      padding: 0 20px;
->>>>>>> 6a81d2dc0a1796845d83a79a3824226eaa328e67
+  padding: 0 20px;
 }
 
 button {
@@ -91,7 +95,7 @@ button:not([disabled]):hover {
   background-color: rgba(44,49,74,.6);
 }
 
-button:disabled{
+button[disabled]{
   background-color: transparent;
   color:#2b2f34;
   border-color: #2b2f34;
@@ -101,49 +105,52 @@ button:disabled{
 button.retry{
   margin:20px;
 }
-.selected {
+.selected, .selected[disabled]:hover {
   background-color: #fff;
   color: #2b3141;
   transition: background-color .25s linear;
 }
-.incorrect {
+.incorrect, .incorrect[disabled]:hover {
   background-color: #83141e;
   border-color: #83141e;
   color:#fff;
   transition: background-color .25s linear;
 }
-.correct {
+.correct, .correct[disabled]:hover {
   background-color: #097b09;
   border-color: #097b09;
   color:#fff;
   transition: background-color .25s linear;
 }
-
-<<<<<<< HEAD
-.final-results.perfect{
-
+.missed, .missed[disabled]:hover{
+  background-color: #BAEEC6;
+  border-color: #83141e;
+  color:#333;
+  transition: background-color .25s linear;
 }
-.final-results.good{
 
-}
-.final-results.ok{
 
-}
-.final-results.oops{
-
-=======
 .final-results.perfect:before{
-  content:url('https://tanialynne.com/indeed/img/perfect.png');
+  content:url('img/perfect.png');
 }
 .final-results.good:before{
-  content:url('https://tanialynne.com/indeed/img/good.png');
-};
-.final-results.ok:before{
-  content:url('https://tanialynne.com/indeed/img/ok.png');
+  content:url('img/good.png');
+}
+.final-results.notbad:before{
+  content:url('img/ok.png');
 }
 .final-results.uhoh:before{
-  content:url('https://tanialynne.com/indeed/img/uhoh.png');
->>>>>>> 6a81d2dc0a1796845d83a79a3824226eaa328e67
+  content:url('img/uhoh.png');
+}
+
+.fadeInAndOut {
+    animation: fadeinout 1.5s linear 1 forwards;
+}
+
+@keyframes fadeinout {
+  0%,100% { opacity: 1; }
+  25% { opacity: 0; }
+  35% { opacity: 0; }
 }
 
 @media only screen and (max-width: 1280px) {
@@ -157,9 +164,6 @@ button.retry{
     margin: 0 auto;
     width: 100%;
     padding:16px 0;
-<<<<<<< HEAD
-=======
     min-width:325px;
->>>>>>> 6a81d2dc0a1796845d83a79a3824226eaa328e67
   }
 }
