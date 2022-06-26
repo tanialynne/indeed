@@ -131,21 +131,22 @@ button.retry{
 
 
 .final-results.perfect:before{
-  content:url('img/perfect.png');
+  content:url('https://tanialynne.com/indeed/img/perfect.png');
 }
 .final-results.good:before{
-  content:url('img/good.png');
+  content:url('https://tanialynne.com/indeed/img/good.png');
 }
 .final-results.notbad:before{
-  content:url('img/ok.png');
+  content:url('https://tanialynne.com/indeed/iimg/ok.png');
 }
 .final-results.uhoh:before{
-  content:url('img/uhoh.png');
+  content:url('https://tanialynne.com/indeed/img/uhoh.png');
 }
 
 .fadeInAndOut {
     animation: fadeinout 1.5s linear 1 forwards;
 }
+
 
 @keyframes fadeinout {
   0%,100% { opacity: 1; }
