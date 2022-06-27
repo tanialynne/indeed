@@ -137,7 +137,7 @@ button.retry{
   content:url('https://tanialynne.com/indeed/img/good.png');
 }
 .final-results.notbad:before{
-  content:url('https://tanialynne.com/indeed/iimg/ok.png');
+  content:url('https://tanialynne.com/indeed/img/ok.png');
 }
 .final-results.uhoh:before{
   content:url('https://tanialynne.com/indeed/img/uhoh.png');
