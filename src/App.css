@@ -129,29 +129,41 @@ button.retry{
   transition: background-color .25s linear;
 }
 
-
 .final-results.perfect:before{
-  content:url('https://tanialynne.com/indeed/img/perfect.png');
+  content:url('./img/perfect.png');
 }
 .final-results.good:before{
-  content:url('https://tanialynne.com/indeed/img/good.png');
+  content:url('./img/good.png');
 }
 .final-results.notbad:before{
-  content:url('https://tanialynne.com/indeed/img/ok.png');
+  content:url('./img/ok.png');
 }
 .final-results.uhoh:before{
-  content:url('https://tanialynne.com/indeed/img/uhoh.png');
+  content:url('./img/uhoh.png');
+}
+.final-results{
+  opacity:0;
 }
 
 .fadeInAndOut {
     animation: fadeinout 1.5s linear 1 forwards;
 }
+.fadeIn {
+    animation: fadein 1s linear 1 forwards;
+}
 
+#preload{
+  display:none;
+}
 
 @keyframes fadeinout {
   0%,100% { opacity: 1; }
   25% { opacity: 0; }
   35% { opacity: 0; }
+}
+@keyframes fadein {
+  0% { opacity: 0; }
+  100% { opacity: 100; }
 }
 
 @media only screen and (max-width: 1280px) {

@@ -1,0 +1,55 @@
+[
+  {
+    "text": "If you have 10 mangos and another person gives you 12 more, how‌ ‌many‌ ‌mangos‌ ‌will‌ ‌you‌ ‌have‌ ‌in‌ ‌total?‌",
+    "qtype": "samc",
+    "options": [
+      { "id": 0, "text": "2 mangos", "isCorrect": false },
+      { "id": 1, "text": "10 mangos", "isCorrect": false },
+      { "id": 2, "text": "22 mangos", "isCorrect": true }
+    ]
+  },
+  {
+    "text": "If‌ ‌a‌ ‌train‌ ‌is‌ ‌supposed‌ ‌to‌ ‌reach‌ ‌the‌ ‌station‌ ‌at‌ ‌4:10‌ ‌am‌. but‌ ‌it‌ ‌is ‌35‌ ‌minutes‌ late,‌ ‌at‌ ‌what‌ ‌time‌ ‌will ‌the‌ ‌train‌ ‌reach‌ ‌the‌ ‌station?‌ ‌",
+    "qtype": "samc",
+    "options": [
+      { "id": 0, "text": "3:00 am", "isCorrect": false },
+      { "id": 1, "text": "3:25 am", "isCorrect": false },
+      { "id": 2, "text": "4:45 am", "isCorrect": true },
+      { "id": 3, "text": "4:45 pm", "isCorrect": false },
+      { "id": 4, "text": "6:00 pm", "isCorrect": false }
+    ]
+  },
+  {
+    "text": "Which of these animals can fly? (Select all that apply)",
+    "qtype": "mamc",
+    "options": [
+
+      { "id": 0, "text": "Bats", "isCorrect": true },
+      { "id": 1, "text": "Birds", "isCorrect": true },
+      { "id": 2, "text": "Cats", "isCorrect": false },
+      { "id": 3, "text": "Dragonflies", "isCorrect": true },
+      { "id": 4, "text": "Pigs", "isCorrect": false },
+      { "id": 5, "text": "Worms", "isCorrect": false }
+    ]
+  },
+  {
+    "text": "Which of the following is a list of colors?",
+    "qtype": "samc",
+    "options": [
+      { "id": 0, "text": "Cat, dog, fish", "isCorrect": false },
+      { "id": 2, "text": "Drums, guitar, harmonica, piano, tambourine, trumpet", "isCorrect": false },
+      { "id": 1, "text": "Mercury, Venus, Earth, Mars, Jupiter, Saturn, Neptune, Uranus", "isCorrect": false },
+      { "id": 3, "text": "Red, orange, yellow, green, blue, indigo, violet", "isCorrect": true }
+    ]
+  },
+  {
+    "text": "If you are reading a book and are on page 374, what will the number of the next page be?",
+    "qtype": "samc",
+    "options": [
+      { "id": 0, "text": "373", "isCorrect": false },
+      { "id": 1, "text": "375", "isCorrect": true },
+      { "id": 2, "text": "400", "isCorrect": false },
+      { "id": 3, "text": "474", "isCorrect": false }
+    ]
+  }
+]
